@@ -29,7 +29,7 @@ public class Connect4 {
         }
 
         int turn = 1;
-        int currentPlayerIndex = 1;
+        int currentPlayerIndex = playerList.size() - 1;
         String player = playerList.get(currentPlayerIndex);
         boolean isWinningStep = false;
         System.out.println("````text");
@@ -122,6 +122,7 @@ public class Connect4 {
         currentConnection = previousDisc == emptyChar ? 0 : 1;
         for (int col = 1; col < grid[0].length; col++) {
             currentDisc = grid[currentStepRow][col];
+
             if (currentDisc == previousDisc && currentDisc != emptyChar) {
                 currentConnection++;
             } else if (currentDisc != emptyChar) {
@@ -129,6 +130,7 @@ public class Connect4 {
             } else {
                 currentConnection = 0;
             }
+
             if (currentConnection >= requiredConnection) return true;
             previousDisc = currentDisc;
         }
@@ -138,6 +140,7 @@ public class Connect4 {
         currentConnection = previousDisc == emptyChar ? 0 : 1;
         for (int row = 1; row < grid.length; row++) {
             currentDisc = grid[row][currentStepColumn];
+
             if (currentDisc == previousDisc && currentDisc != emptyChar) {
                 currentConnection++;
             } else if (currentDisc != emptyChar) {
@@ -145,6 +148,7 @@ public class Connect4 {
             } else {
                 currentConnection = 0;
             }
+
             if (currentConnection >= requiredConnection) return true;
             previousDisc = currentDisc;
         }
@@ -158,6 +162,7 @@ public class Connect4 {
         int counter = 1;
         while (startingRow - counter >= 0 && startingColumn + counter <= grid[0].length - 1) {
             currentDisc = grid[startingRow - counter][startingColumn + counter];
+
             if (currentDisc == previousDisc && currentDisc != emptyChar) {
                 currentConnection++;
             } else if (currentDisc != emptyChar) {
@@ -165,6 +170,7 @@ public class Connect4 {
             } else {
                 currentConnection = 0;
             }
+
             if (currentConnection >= requiredConnection) return true;
             previousDisc = currentDisc;
             counter++;
@@ -179,6 +185,7 @@ public class Connect4 {
         counter = 1;
         while (startingRow + counter <= grid.length - 1 && startingColumn + counter <= grid[0].length - 1) {
             currentDisc = grid[startingRow + counter][startingColumn + counter];
+
             if (currentDisc == previousDisc && currentDisc != emptyChar) {
                 currentConnection++;
             } else if (currentDisc != emptyChar) {
@@ -186,6 +193,7 @@ public class Connect4 {
             } else {
                 currentConnection = 0;
             }
+
             if (currentConnection >= requiredConnection) return true;
             previousDisc = currentDisc;
             counter++;
